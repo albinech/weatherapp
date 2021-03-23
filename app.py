@@ -1,10 +1,19 @@
 from flask import Flask, url_for, render_template
 import requests
 import pprint
+import _sqlite3
 from flask_sqlalchemy import SQLAlchemy
 
 app = Flask(__name__)
 app.config['DEBUG'] = True
+app.config['SQLALCHEMY_DATABASE_URI']='sqlite:///weather.db'
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+
+db=SQLAlchemy(app)
+
+class City(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    name=db.Column(db.String(50))
 
 
 @app.route('/')
@@ -22,5 +31,6 @@ def index():
         'Icon': r['list'][1]['weather'][0]['icon']
     }
     print(weather['Desc'])
-    return render_template('weather.html', city=weather['City'], temp=weather['Temp'], desc=weather['Desc'],
-                           icon=weather['Icon'])
+    return render_template('weather.html', weath=weather)
+#city=weather['City'], temp=weather['Temp'], desc=weather['Desc'],
+                           #icon=weather['Icon']

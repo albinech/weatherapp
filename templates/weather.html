@@ -49,16 +49,16 @@
                         <article class="media">
                             <div class="media-left">
                                 <figure class="image is-50x50">
-                                    <img src="http://openweathermap.org/img/w/{{ icon }}.png" alt="Image">
+                                    <img src="http://openweathermap.org/img/w/{{ weath['Icon'] }}.png" alt="Image">
                                 </figure>
                             </div>
                             <div class="media-content">
                                 <div class="content">
                                     <p>
-                                        <span class="title">{{ city }}</span>
+                                        <span class="title">{{ weath['City'] }}</span>
                                         <br>
-                                        <span class="subtitle">{{ temp}}° C</span>
-                                        <br> {{ desc }}
+                                        <span class="subtitle">{{weath['Temp']}}° C</span>
+                                        <br> {{ weath['Desc'] }}
                                     </p>
                                 </div>
                             </div>
